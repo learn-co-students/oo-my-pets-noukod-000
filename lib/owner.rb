@@ -1,7 +1,7 @@
 class Owner
   attr_accessor :name, :pets
   attr_reader :species
-  @@all = []
+  @@owners = []
 
   def initialize(specie)
     @species = specie
@@ -10,7 +10,7 @@ class Owner
   end
 
   def self.all
-    @@all
+    @@owners
   end
 
   def self.reset_all
@@ -38,15 +38,15 @@ class Owner
   end
 
   def walk_dogs
-    pets[:dogs][-1].mood = "happy"
+    pets[:dogs].each {|dog| dog.mood = "happy"}
   end
 
   def play_with_cats
-    pets[:cats][-1].mood = "happy"
+    pets[:cats].each {|cat| cat.mood = "happy"}
   end
 
   def feed_fish
-    pets[:fishes][-1].mood = "happy"
+    pets[:fishes].each {|fish| fish.mood = "happy"}
   end
 
   def sell_pets
