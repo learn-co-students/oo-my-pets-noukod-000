@@ -41,25 +41,34 @@ def buy_dog name
   end
 
   def walk_dogs
-    @pets[:dogs].collect! {|dog| dog.mood = 'happy'}
+    pets[:dogs].each do |dog|
+      dog.mood = "happy"
+    end
   end
 
   def play_with_cats
-    @pets[:cats].collect! {|cat| cat.mood = 'happy'}
+    pets[:cats].each do |cat|
+      cat.mood = "happy"
+    end
   end
 
   def feed_fish
-    @pets[:fishes].collect! {|fish| fish.mood = 'happy'}
-  end
-  def sell_pets
-    @pets.each do |type, pets|
-      pets.collect! do |pet|
-        pet.mood = 'nervous'
-        pet
-      end
+    pets[:fishes].each do |fish|
+      fish.mood = "happy"
     end
+  end
 
-    @pets = {fishes: [], dogs: [], cats: []}
+  def sell_pets
+    pets.each do |species, animals|
+      animals.each do |animal|
+        animal.mood = "nervous"
+      end
+      animals.clear
+    end
+  end
+
+  def say_species
+    "I am a #{species}."
   end
   def list_pets
     "I have #{@pets[:fishes].size} fish, #{@pets[:dogs].size} dog(s), and #{@pets[:cats].size} cat(s)."
